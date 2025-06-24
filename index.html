@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>African American History Curriculum: 90-Day Semester Plan</title>
-    <!-- Chosen Palette: Warm Neutrals with Era-Specific Accents for navigation, subtle blues for headers. -->
-    <!-- Application Structure Plan: The application is structured as a single-page interactive guide. A prominent top navigation bar allows users to select a specific "Unit" (1-5). Upon selecting a unit, a sidebar dynamically populates with a list of all 18 "Days" within that unit. The main content area then displays the selected day's full lesson plan, including Bell Ringer, Essential Questions, Lecture/Discussion points, Student Activity, and Exit Activity. This structure prioritizes clear hierarchical navigation (Unit -> Day) and detailed content display, allowing teachers to easily access and understand individual lessons or the overall flow of each unit. This design was chosen over a linear scroll to make a dense amount of information digestible and quickly accessible. -->
-    <!-- Visualization & Content Choices: Content is primarily textual, structured using semantic HTML and styled with Tailwind CSS for readability and hierarchy. Interactive elements are limited to navigation (buttons for units and days) driven by JavaScript to dynamically update content. No charts or complex visualizations are present as the core content is the curriculum plan itself, and the goal is ease of access and readability for daily lesson details. This aligns with the "NO SVG/Mermaid" constraint and focuses on functional UI. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>African American History Curriculum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -61,54 +57,89 @@
         .content-card h3 {
             color: #383838;
         }
+        /* Added for modal */
+        .modal {
+            display: none; /* Initially hidden */
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="min-h-screen flex flex-col">
-        <!-- Header -->
         <header class="bg-gray-800 text-white p-6 shadow-md">
             <div class="container mx-auto text-center">
                 <h1 class="text-3xl md:text-5xl font-serif font-bold mb-2">African American History Curriculum</h1>
-                <p class="text-xl md:text-2xl font-serif">90-Day Semester Plan</p>
+				</div>
+				<p></p>
                 <p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">
-                    This comprehensive semester-long course offers an in-depth and inspiring exploration of African American history from the late 18th century to the present day. We will embark on a journey that begins with the resilience and fierce resistance of enslaved African Americans, who, despite unimaginable adversity, forged communities, preserved rich cultural traditions, and continuously fought for their freedom. The course then navigates the complex landscape of Reconstruction, examining the monumental strides made towards citizenship and equality, alongside the devastating rise of Jim Crow segregation and the determined efforts to dismantle it. We will trace the transformative impact of the Great Migration, which saw millions of African Americans redefine their lives and reshape urban landscapes, leading to the cultural explosion of the Harlem Renaissance—a period of unparalleled artistic and intellectual brilliance that redefined American identity. The curriculum culminates in a deep dive into the strategic brilliance and heroic actions of the Civil Rights Movement, celebrating its landmark legislative achievements and the diverse philosophies that propelled the fight for liberation. Finally, we will examine the ongoing journey from the Post-Civil Rights Era to today, recognizing continued progress in political representation and cultural influence, while acknowledging the persistent struggles for justice and the emergence of contemporary movements shaping our present and future. Through daily lessons, rigorous primary source analysis, multimedia resources, and interactive assessments, this course emphasizes themes of unwavering resilience, profound creativity, powerful agency, and the enduring pursuit of true equity, fostering critical thinking and empathy as students connect historical triumphs and challenges to contemporary issues.
+                    This comprehensive semester-long course offers an in-depth and inspiring exploration of African American history from the late 18th century to the present day. We will embark on a journey that begins with the resilience and fierce resistance of enslaved African Americans, who, despite unimaginable adversity, forged communities, preserved rich cultural traditions, and continuously fought for their freedom. 
+				</p>
+				<p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">
+					The course then navigates the complex landscape of Reconstruction, examining the monumental strides made towards citizenship and equality, alongside the devastating rise of Jim Crow segregation and the determined efforts to dismantle it. We will trace the transformative impact of the Great Migration, which saw millions of African Americans redefine their lives and reshape urban landscapes, leading to the cultural explosion of the Harlem Renaissance—a period of unparalleled artistic and intellectual brilliance that redefined American identity.
+				<p>
+				<p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">
+				The curriculum culminates in a deep dive into the strategic brilliance and heroic actions of the Civil Rights Movement, celebrating its landmark legislative achievements and the diverse philosophies that propelled the fight for liberation. Finally, we will examine the ongoing journey from the Post-Civil Rights Era to today, recognizing continued progress in political representation and cultural influence, while acknowledging the persistent struggles for justice and the emergence of contemporary movements shaping our present and future. 
+				</p>
+				<p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">Through daily lessons, rigorous primary source analysis, multimedia resources, and interactive assessments, this course emphasizes themes of unwavering resilience, profound creativity, powerful agency, and the enduring pursuit of true equity, fostering critical thinking and empathy as students connect historical triumphs and challenges to contemporary issues.
                 </p>
-                <p class="mt-3 text-base italic">
-                    <strong>Course Driving Compelling Question:</strong> How has the enduring spirit of African American resilience, innovation, and pursuit of justice fundamentally shaped the course of American democracy and culture from its foundations to the present day?
-                </p>
-            </div>
         </header>
 
-        <!-- Main Content Area -->
+        <section class="container mx-auto px-4 py-8 space-y-6">
+            <h2 class="text-2xl font-bold text-center section-header mb-6">Course Objectives</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <ul class="list-disc list-inside ml-4 space-y-2" id="course-objectives-list">
+                    </ul>
+            </div>
+            <h2 class="text-2xl font-bold text-center section-header mb-6 mt-8">Semester Objectives</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <ul class="list-disc list-inside ml-4 space-y-2" id="semester-objectives-list">
+                    </ul>
+            </div>
+			<h2 class="text-2xl font-bold text-center section-header mb-6 mt-8">Course Compelling Question</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="mt-3 text-base">
+                    How has the enduring spirit of African American resilience, innovation, and pursuit of justice fundamentally shaped the course of American democracy and culture from its foundations to the present day?
+                </p>
+            </div>
+        </section>
+
         <div class="flex flex-1 flex-col lg:flex-row container mx-auto px-4 py-8">
-            <!-- Unit Navigation -->
             <nav class="lg:w-1/5 w-full bg-white p-4 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 flex-shrink-0">
                 <h3 class="text-xl font-bold section-header mb-4 border-b pb-2">Semester Units</h3>
                 <ul id="unit-nav-list" class="flex lg:flex-col flex-wrap lg:space-y-2 space-x-2 lg:space-x-0">
-                    <!-- Unit items will be rendered here by JS -->
-                </ul>
+                    </ul>
             </nav>
-
-            <!-- Sidebar for Days (Unit Specific) -->
-            <aside id="day-sidebar" class="lg:w-1/4 w-full bg-white p-4 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 flex-shrink-0" style="display: none;">
+			
+			<aside id="day-sidebar" class="lg:w-1/4 w-full bg-white p-4 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 flex-shrink-0" style="display: none;">
                 <h3 id="day-sidebar-title" class="text-xl font-bold section-header mb-4 border-b pb-2"></h3>
-                <ul id="day-list" class="flex flex-col space-y-2 overflow-y-auto max-h-[70vh]">
-                    <!-- Day items will be rendered here by JS -->
-                </ul>
+                <ul id="day-list" class="flex flex-col space-y-2 overflow-y-auto">
+                    </ul>
             </aside>
 
-            <!-- Main Content Display Area -->
             <main id="main-content-display" class="flex-1 bg-white p-6 rounded-lg shadow-lg">
-                <!-- Lesson plan details will be loaded here -->
-            </main>
+                </main>
         </div>
 
-        <!-- Footer -->
         <footer class="bg-gray-800 text-gray-400 text-sm text-center p-4 mt-8">
-            <p>&copy; 2025 Matthew Pierce</p>
+            <p>© 2025 Matthew Pierce</p>
         </footer>
     </div>
+    
+    <div id="unit-modal" class="modal fixed inset-0 bg-gray-600 bg-opacity-75 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <h3 id="modal-unit-title" class="text-2xl text-center leading-6 font-bold section-header"></h3>
+                <div id="modal-content" class="mt-4 px-4 py-3 text-left">
+                    </div>
+                <div class="items-center px-4 py-3">
+                    <button id="modal-close-btn" class="px-4 py-2 bg-gray-800 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        Close and View Lessons
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         const curriculumData = {
@@ -2120,7 +2151,7 @@
                 return;
             }
 
-            daySidebarTitle.textContent = `Days in ${unit.title}`;
+            daySidebarTitle.textContent = `${unit.title}`;
             dayList.innerHTML = ''; // Clear existing days
 
             unit.days.forEach(day => {
@@ -2220,7 +2251,48 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderUnitNavigation();
-            renderCourseObjectivesAndSemesterObjectives(); // Render objectives initially
+            // Render Course and Semester Objectives statically
+            const courseObjectivesList = document.getElementById('course-objectives-list');
+            courseObjectivesList.innerHTML = curriculumData.courseObjectives.map(obj => `<li>${obj}</li>`).join('');
+            
+            const semesterObjectivesList = document.getElementById('semester-objectives-list');
+            semesterObjectivesList.innerHTML = curriculumData.semesterObjectives.map(obj => `<li>${obj}</li>`).join('');
+
+            // --- MODAL LOGIC ---
+            const unitModal = document.getElementById('unit-modal');
+            const modalUnitTitle = document.getElementById('modal-unit-title');
+            const modalContent = document.getElementById('modal-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            function showModal(unitId) {
+                const unit = curriculumData.units.find(u => u.id === unitId);
+                if (!unit) return;
+
+                modalUnitTitle.textContent = `Unit ${unit.id.replace('unit', '')}: ${unit.title}`;
+                modalContent.innerHTML = `
+                    <h4 class="text-xl font-semibold subsection-header mb-2">Compelling Question</h4>
+                    <p class="mb-4 italic">${unit.compellingQuestion}</p>
+                    <h4 class="text-xl font-semibold subsection-header mb-2">Unit Objectives</h4>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        ${unit.unitObjectives.map(obj => `<li>${obj}</li>`).join('')}
+                    </ul>
+                `;
+                unitModal.style.display = 'block';
+            }
+
+            function hideModal() {
+                unitModal.style.display = 'none';
+            }
+
+            modalCloseBtn.addEventListener('click', hideModal);
+            // Close modal if user clicks on the background overlay
+            unitModal.addEventListener('click', (e) => {
+                if (e.target.id === 'unit-modal') {
+                    hideModal();
+                }
+            });
+            // --- END MODAL LOGIC ---
+
 
             // Event listener for unit navigation
             document.getElementById('unit-nav-list').addEventListener('click', (e) => {
@@ -2233,6 +2305,9 @@
 
                     currentUnitId = target.dataset.unitId;
                     currentDayNum = null; // Reset day selection
+                    
+                    // --- Show the modal for the selected unit ---
+                    showModal(currentUnitId);
                     
                     renderDaySidebar(currentUnitId);
                     
@@ -2260,33 +2335,7 @@
                 }
             });
 
-            function renderCourseObjectivesAndSemesterObjectives() {
-                const mainContentDisplay = document.getElementById('main-content-display');
-                mainContentDisplay.innerHTML = `
-                    <section class="space-y-6">
-                        <h2 class="text-3xl font-bold text-center section-header mb-6">Course Objectives</h2>
-                        <div class="content-card p-6 rounded-lg shadow-sm">
-                            <ul class="list-disc list-inside ml-4 space-y-2">
-                                ${curriculumData.courseObjectives.map(obj => `<li>${obj}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </section>
-                    <section class="mt-8 space-y-6">
-                        <h2 class="text-3xl font-bold text-center section-header mb-6">Semester Objectives</h2>
-                        <div class="content-card p-6 rounded-lg shadow-sm">
-                            <ul class="list-disc list-inside ml-4 space-y-2">
-                                ${curriculumData.semesterObjectives.map(obj => `<li>${obj}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </section>
-                `;
-            }
 
-            // Auto-select Unit 1 and Day 1 on load
-            const initialUnitItem = document.querySelector('#unit-nav-list .unit-nav-item');
-            if (initialUnitItem) {
-                initialUnitItem.click(); // Simulate click to load unit 1 days and automatically first day
-            }
         });
     </script>
 </body>
